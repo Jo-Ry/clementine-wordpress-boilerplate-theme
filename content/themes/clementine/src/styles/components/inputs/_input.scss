@@ -1,0 +1,23 @@
+@use '../../abstract/' as *;
+
+.text-input {
+	label {
+		display: inline-block;
+		color: $clr-neutral-300;
+		margin-block-end: rem(10);
+	}
+
+	input {
+		background-color: transparent;
+		color: $clr-neutral-100;
+		width: 100%;
+		padding: rem(10 15);
+		border: none;
+		border-radius: rem(4);
+		outline: 1px solid $clr-neutral-300;
+
+		&:focus-visible {
+			outline-color: $clr-neutral-200;
+		}
+	}
+}

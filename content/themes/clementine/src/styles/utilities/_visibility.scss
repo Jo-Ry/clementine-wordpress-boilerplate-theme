@@ -1,0 +1,89 @@
+@use '../abstract/' as *;
+
+/*
+	* Utility Styles for Mobile and Desktop Switching
+
+	* Description:
+	  This Scss file contains descriptive utility styles for toggling
+	  between mobile and desktop.
+
+	* Usage:
+	  Apply these utility classes on the parent to handle the transition
+	  between mobile and desktop layouts.
+
+	  	Required: '.mobile' & '.desktop' has to be chained with either:
+			* large
+			* x-large
+
+			to understand which breakpoint to listen for.
+
+	  	Required: '.desktop' has to be chained with one more class:
+			* block
+			* flex
+			* grid
+
+			to understand what property to display with.
+
+	* Examples:
+	  Here is how the markup could look like:
+
+	 	<element class="... | mobile large" >
+			//.. mobile content
+		</element>
+
+		<element class="... | desktop large flex" >
+			//.. desktop content
+		</element>
+*/
+
+.mobile {
+	&.large {
+		@include mq(large-up) {
+			display: none;
+		}
+	}
+
+	&.xlarge {
+		@include mq(xlarge-up) {
+			display: none;
+		}
+	}
+}
+
+.desktop {
+	&.large {
+		display: none;
+
+		@include mq(large-up) {
+			&.block {
+				display: block;
+			}
+
+			&.flex {
+				display: flex;
+			}
+
+			&.grid {
+				display: grid;
+			}
+		}
+	}
+
+	&.xlarge {
+		display: none;
+
+		@include mq(xlarge-up) {
+			&.block {
+				display: block;
+			}
+
+			&.flex {
+				display: flex;
+			}
+
+			&.grid {
+				display: grid;
+			}
+		}
+	}
+}

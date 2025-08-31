@@ -1,0 +1,122 @@
+{
+  "version": 3,
+  "customTemplates": [
+    {
+      "name": "empty-canvas",
+      "title": "Empty Canvas",
+      "description": "A blank template with no header or footer"
+    }
+  ],
+  "settings": {
+    "typography": {
+      "fontSizes": []
+    },
+    "layout": {
+      "contentSize": "840px"
+    },
+    "spacing": {
+      "blockGap": "1.5rem",
+      "units": ["px", "rem"]
+    },
+    "color": {
+      "custom": false,
+      "customDuotone": false,
+      "customGradient": false,
+
+      "defaultDuotone": false,
+      "defaultGradients": false,
+      "defaultPalette": false,
+
+      "palette": [
+        {
+          "slug": "base",
+          "color": "hsl(0, 0%, 100%)",
+          "name": "Base"
+        },
+        {
+          "slug": "contrast",
+          "color": "hsl(0, 0%, 0%)",
+          "name": "Contrast"
+        },
+        {
+          "slug": "ghost-white",
+          "color": "hsl(0, 0%, 92%)",
+          "name": "Ghost-white"
+        },
+        {
+          "slug": "ash",
+          "color": "hsl(0, 0%, 55%)",
+          "name": "Ash"
+        },
+        {
+          "slug": "graphite",
+          "color": "hsl(0, 0%, 11%)",
+          "name": "Graphite"
+        },
+        {
+          "slug": "obsidian",
+          "color": "hsl(0, 0%, 24%)",
+          "name": "Obsidian"
+        },
+        {
+          "slug": "onyx",
+          "color": "hsl(0, 0%, 18%)",
+          "name": "Onyx"
+        },
+        {
+          "slug": "apricot",
+          "color": "hsl(33, 100%, 50%)",
+          "name": "Apricot"
+        },
+        {
+          "slug": "cinnabar",
+          "color": "hsl(21, 95%, 44%)",
+          "name": "Cinnabar"
+        },
+        {
+          "slug": "slate-blue",
+          "color": "hsl(214, 28%, 50%)",
+          "name": "Slate-blue"
+        },
+        {
+          "slug": "steel-blue",
+          "color": "hsl(214, 28%, 35%)",
+          "name": "Steel-blue"
+        },
+        {
+          "slug": "crimson",
+          "color": "hsl(0, 91%, 41%)",
+          "name": "crimson"
+        },
+        {
+          "slug": "lime",
+          "color": "hsl(80, 91%, 41%)",
+          "name": "Lime"
+        },
+        {
+          "slug": "lemon",
+          "color": "hsl(55, 91%, 50%)",
+          "name": "Lemon"
+        }
+      ],
+      "gradients": [],
+      "duotone": []
+    }
+  },
+  "styles": {
+    "blocks": {
+      "core/button": {
+        "color": {
+          "background": "var(--wp--preset--color--cinnabar)",
+          "text": "var(--wp--preset--color--base)"
+        },
+        "border": {
+          "color": false,
+          "radius": false,
+          "style": false,
+          "width": false
+        }
+      }
+    }
+  }
+}

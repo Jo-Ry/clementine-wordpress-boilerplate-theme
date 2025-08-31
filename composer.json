@@ -1,0 +1,45 @@
+{
+  "name": "clementine/wp-starter",
+  "description": "Boilerplate code building for building a WordPress site using Vite",
+  "type": "project",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org"
+    }
+  ],
+  "require": {
+    "roots/wordpress": ">=6.8",
+    "wecodemore/wpstarter": "3.0.0-beta.13"
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "allow-plugins": {
+      "roots/wordpress-core-installer": true,
+      "composer/installers": true,
+      "wecodemore/wpstarter": true
+    }
+  },
+  "extra": {
+    "wpstarter": "./wpstarter-extension/wpstarter.json",
+    "installer-paths": {
+      "vendor/{$vendor}/{$name}": [
+        "wpackagist-plugin/memcached",
+        "type:wordpress-dropin"
+      ],
+      "public/wp-content/mu-plugins/{$name}": [
+        "type:wordpress-muplugin"
+      ],
+      "public/wp-content/themes/{$name}": [
+        "type:wordpress-theme"
+      ],
+      "public/wp-content/{$name}": [
+        "type:wordpress-dropin"
+      ]
+    },
+    "wordpress-content-dir": "public/wp-content",
+    "wordpress-install-dir": "public/wp"
+  }
+}

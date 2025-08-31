@@ -1,0 +1,12 @@
+{
+  "skip-db-check": true,
+  "register-theme-folder": true,
+  "content-dev-dir": "content",
+  "install-wp-cli": false,
+  "env-example": false,
+  "autoload": "wpstarter-extension/wpstarter-autoload.php",
+  "custom-steps": {
+    "build-public-readme": "WpStarterExtension\\Steps\\PublicReadmeStep",
+    "build-public-htaccess": "WpStarterExtension\\Steps\\PublicHtaccessStep"
+  }
+}

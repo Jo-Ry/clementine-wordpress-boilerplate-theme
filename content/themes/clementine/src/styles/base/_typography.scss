@@ -1,0 +1,37 @@
+@use '../abstract/' as *;
+
+body {
+	// A system font or web-safe font is one that’s already assumed to be on the
+	// vast majority of users’ devices, with no need for a web font to be downloaded.
+	font-family: system-ui;
+}
+
+h1, h2, h3, h4 {
+	font-weight: 700;
+}
+
+h1, h2, h3, h4, p, ul, li, a, .admin-bar:not(span) {
+	color: $clr-neutral-900;
+}
+
+/*
+	Each heading has also got its own class if you for example need
+	to display a heading that looks like an h4 but you need to use an h2.
+	Remember that heading are mainly there for accessability reasons :)
+*/
+.h1, h1 {
+	font-size: rem(48);
+}
+
+.h2, h2 {
+	font-size: rem(40);
+}
+
+.h3, h3 {
+	font-size: rem(32);
+}
+
+.h4, h4 {
+	font-size: rem(24);
+}
+

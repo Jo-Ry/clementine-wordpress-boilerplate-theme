@@ -1,0 +1,55 @@
+/*
+	Global colors for you to use in your project.
+
+	Steps:
+	    1: Define your colors in theme.json.
+      
+      2: Assign the the generated global css variables from theme.json.
+         for more information: 
+         https://developer.wordpress.org/themes/global-settings-and-styles/settings/color/#registering-custom-color-presets
+	    
+         3: put them into the $colors map. ( optional, but recommanded )
+
+	This will do 3 things for you:
+		1. you will be able to use your sass variables anywhere.
+
+		2. ( optional ) you get a utility class for background-color.
+			.bg-primary-100 {
+				background-color: ...;
+			}
+
+		3. ( optional ) you get a utility class for color.
+			.clr-primary-100 {
+				color: ...;
+			}
+*/
+
+/*
+	Higher numbers correspond to darker shades, and lower numbers to lighter shades. 
+  The scale ranges from 100 to 900, with 400 serving as the base or "regular" shade.
+
+	This numbering system is comparable to how font-weight is used in CSS, 
+  where 400 typically represents the regular weight.
+*/
+
+// Neutral Colors
+$clr-neutral-100: var(--wp--preset--color--base); // hsl(0, 0%, 100%)
+$clr-neutral-200: var(--wp--preset--color--ghost-white); // hsl(0, 0%, 92%)
+$clr-neutral-300: var(--wp--preset--color--ash); // hsl(0, 0%, 55%)
+$clr-neutral-400: var(--wp--preset--color--graphite); // hsl(0, 0%, 11%)
+$clr-neutral-700: var(--wp--preset--color--obsidian); // hsl(0, 0%, 24%)
+$clr-neutral-800: var(--wp--preset--color--onyx); // hsl(0, 0%, 18%)
+$clr-neutral-900: var(--wp--preset--color--contrast); // hsl(0, 0%, 0%)
+
+// Primary Colors
+$clr-primary-300: var(--wp--preset--color--apricot); // hsl(33, 100%, 50%)
+$clr-primary-400: var(--wp--preset--color--cinnabar); // hsl(21, 95%, 44%)
+
+// Secondary Colors
+$clr-secondary-400: var(--wp--preset--color--slate-blue); // hsl(214, 28%, 50%)
+$clr-secondary-500: var(--wp--preset--color--steel-blue); // hsl(214, 28%, 35%)
+
+// Status Colors
+$clr-error: var(--wp--preset--color--crimson); // hsl(0, 91%, 41%)
+$clr-succes-lime: var(--wp--preset--color--lime); // hsl(80, 91%, 41%)
+$clr-succes-lemon: var(--wp--preset--color--lemon); // hsl(55, 91%, 50%)

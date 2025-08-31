@@ -1,0 +1,120 @@
+@use './functions' as *;
+@use 'sass:map';
+@use 'sass:list';
+@use 'sass:meta';
+
+/*
+	This code generates a set of media queries based on the defined breakpoints in a Sass map called $breakpoints.
+	It uses a nested loop to iterate through each breakpoint and its corresponding value.
+
+	For each breakpoint, it checks if it is the first or last breakpoint in the map. If it is, it defines two media queries:
+	  * one for screens with a maximum width of the breakpoint value.
+	  * one for screens with a minimum width of the breakpoint value.
+
+	  These media queries are stored in a Sass map called $media-queries with keys
+	  of the form $breakpoint-down and $breakpoint-up.
+
+	If the current breakpoint is not the first or last breakpoint, it calculates the range of values
+	between the previous breakpoint and the current breakpoint. It then defines three media queries:
+	  * one for screens with a maximum width of the previous breakpoint value and a minimum width of the current breakpoint value,
+	  * one for screens with a minimum width of the current breakpoint value and a maximum width of the next breakpoint value
+	  * and one for screens with a minimum width of the current breakpoint value and a maximum width of the current breakpoint value.
+
+	  These media queries are then stored in the same $media-queries map with keys of the form
+	  $breakpoint-only, $breakpoint-down, and $breakpoint-up.
+
+	The resulting $media-queries map contains a set of breakpoints that contain variations of single key
+	but also have single query where the variations dont apply.
+*/
+
+/*
+	This map can handle two scenarios:
+
+	* Scenario one is that you need a new break point dependent on the browser width
+	  then write the value as a number and please keep it hierarcichal :)
+
+	* Scenario two is that you need a new break point that dont need variations or
+	  takes in i number for that matter then write the value as you query instead.
+*/
+$breakpoints: (
+  small: 320,
+  medium: 640,
+  large: 1024,
+  xlarge: 1440,
+  xxlarge: 1920,
+  portrait: 'only screen and (orientation: portrait)',
+  landscape: 'only screen and (orientation: landscape)',
+);
+
+$media-queries: ();
+
+@each $breakpoint, $value in $breakpoints {
+  // Generate media queries for regular breakpoints with variations.
+  @if meta.type-of($value) == 'number' {
+    $values: map.values($breakpoints);
+    $index: list.index($values, $value);
+    $first-index: 1;
+    $last-index: list.length($values);
+
+    @if $index == $first-index or $index == $last-index {
+      $range-down: 'only screen and (max-width: #{em-calc($value)})';
+      $range-up: 'only screen and (min-width: #{em-calc($value)})';
+
+      $media-queries: map.merge(
+        $media-queries,
+        (
+          '#{$breakpoint}-down': $range-down,
+          '#{$breakpoint}-up': $range-up,
+        )
+      );
+    } @else {
+      $previous-breakpoint: list.nth($values, $index - 1);
+      $range:
+        calc(#{em-calc($previous-breakpoint)} + #{em-calc(1)}),
+        #{em-calc($value)};
+
+      $range-only: 'only screen and (min-width: #{lower-bound($range)}) and (max-width: #{upper-bound($range)})';
+      $range-down: 'only screen and (max-width: #{em-calc($value)})';
+      $range-up: 'only screen and (min-width: #{em-calc($value)})';
+
+      $media-queries: map.merge(
+        $media-queries,
+        (
+          '#{$breakpoint}-only': $range-only,
+          '#{$breakpoint}-down': $range-down,
+          '#{$breakpoint}-up': $range-up,
+        )
+      );
+    }
+  }
+
+  // Generate a media query where the string represents you single query.
+  @else if meta.type-of($value) == 'string' {
+    $media-queries: map.merge(
+      $media-queries,
+      (
+        '#{$breakpoint}': $value,
+      )
+    );
+  }
+}
+
+/*
+	This mixin called mq takes a single argument: $breakpoint.
+   	The mixin uses a map called $media-queries to retrieve the media query string for the specified breakpoint.
+	If a matching query string is found, the mixin wraps the @content block inside a media query
+	with the specified query string.
+
+	If no matching query string is found, the mixin outputs an error message indicating the available breakpoints.
+*/
+@mixin mq($breakpoint) {
+  $selected-query: map.get($media-queries, $breakpoint);
+
+  @if ($selected-query) {
+    @media #{$selected-query} {
+      @content;
+    }
+  } @else {
+    @error "following params are acceptable: [ #{map-keys($media-queries)} ]";
+  }
+}

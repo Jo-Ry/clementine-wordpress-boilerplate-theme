@@ -1,0 +1,13 @@
+/public
+/vendor
+
+*/node_modules
+content/themes/clementine/dist
+
+.env
+.env.cached.php
+
+wp-cly.yml
+
+.DS_Store
+Thumbs.db

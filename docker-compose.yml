@@ -1,0 +1,25 @@
+services:
+  mariadb:
+    image: mariadb
+    ports:
+      - "8081:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root       # This sets the password for the 'root' database user
+      MYSQL_DATABASE: wordpress_db    # This creates a new database
+      MYSQL_USER: wp_user             # This creates a new non-root database user
+      MYSQL_PASSWORD: wp_password     # This sets the password for the 'wp_user'
+  php:
+    build: .
+    volumes:
+      - .:/var/www/html 
+      - ./apache-site.conf:/etc/apache2/sites-available/000-default.conf 
+    command: bash -c "a2ensite 000-default.conf && apache2ctl -D FOREGROUND"
+    ports:
+      - "8080:80"
+    depends_on:
+      - mariadb
+
+volumes:
+  mariadb_data:

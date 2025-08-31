@@ -1,0 +1,30 @@
+/*
+Theme Name: Clementine
+Author: Johannes
+Version: 1.0
+*/
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    color: linear-gradient(135deg,rgb(221, 150, 103) 0%,rgb(218, 117, 50) 50%,rgb(199, 85, 10) 100%);
+}
+
+:root {
+  /* Primary Palette (Elegant Blue) */
+  --wp--preset--color--primary: #1E3F66;
+  --wp--preset--color--primary-light: #A3B8D6;
+  --wp--preset--color--primary-lighter: #D2DDE9;
+  --wp--preset--color--primary-dark: #112A45;
+
+  /* Secondary Palette (Sophisticated Beige) */
+  --wp--preset--color--secondary: #E1D6C5;
+  --wp--preset--color--secondary-light: #F3ECE2;
+  --wp--preset--color--secondary-lighter: #F9F5EF;
+  --wp--preset--color--secondary-dark: #B3A69A;
+
+  /* Monochrome and Accent */
+  --wp--preset--color--black: #333333;
+  --wp--preset--color--white: #FFFFFF;
+  --wp--preset--color--contrast: #A38E6A;
+}

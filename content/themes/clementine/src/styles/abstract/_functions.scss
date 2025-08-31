@@ -1,0 +1,85 @@
+@use "sass:math";
+@use "sass:list";
+
+$rem-base: 16px;
+
+/*
+  This function takes a numeric value as an argument and returns the value without its unit.
+
+  as first multiplies the input value by 0 and then adds 1. This effectively converts the input
+  value to a unitless value, which can then be divided by itself to remove the unit.
+  The result of this division is then returned as the output of the function.
+
+  For example, if the input value is 10px, the function will first convert it to 10 by multiplying
+  it by 0 and adding 1. Then, it will divide 10 by 10 to remove the px unit and return 1.
+*/
+@function strip-unit($num) {
+  @return math.div($num, ($num * 0 + 1));
+}
+
+/*
+  This function takes two arguments: $value & $base-value.
+
+  The purpose of this function is to convert a given value from a given base unit (in this case, pixels)
+  to the equivalent value in the rem unit.
+
+  The function first divides the value by the base value to get the equivalent value in rem. It then multiplies
+  this result by 1rem to get the final value in rem. If the resulting value is 0rem, the function returns 0 instead.
+*/
+@function convert-to-rem($value, $base-value: $rem-base)  {
+  $value: math.div(strip-unit($value), strip-unit($base-value)) * 1rem;
+  @if ($value == 0rem) {
+    $value: 0; // Turn 0rem into 0
+  }
+  @return $value;
+}
+
+/*
+  This function checks if $values is a single value or a list of values and
+	converts each value to rem using convert-to-rem. Finally, the function returns
+	the converted values in rem.
+*/
+@function rem($values, $base-value: $rem-base) {
+  $max: list.length($values);
+  @if $max == 1 {
+    @return convert-to-rem(list.nth($values, 1), $base-value);
+  }
+  $remValues: ();
+  @for $i from 1 through $max {
+    $remValues: list.append($remValues, convert-to-rem(list.nth($values, $i), $base-value));
+  }
+  @return $remValues;
+}
+
+/*
+  This function takes two arguments, $pixels and $context, and returns a value in em units.
+  The value of $pixels is divided by $context and the result is returned as an em value.
+  If $context is not specified, it defaults to the browser context.
+*/
+@function em-calc($pixels, $context: 16) {
+	@return #{math.div($pixels, $context)}em;
+}
+
+/*
+  This function takes a single argument, $range, which is a list of two or more values.
+  It returns the first value in the list, which is the lower bound of the range.
+  If the list has less than two values, it returns 0.
+ */
+@function lower-bound($range) {
+	@if list.length($range) <= 0 {
+		@return 0;
+	}
+	@return list.nth($range, 1);
+}
+
+/*
+  This function takes a single argument, $range, which is a list of two or more values.
+  It returns the second value in the list, which is the upper bound of the range.
+  If the list has less than two values, it returns a very large number (999999999999).
+*/
+@function upper-bound($range) {
+	@if list.length($range) < 2 {
+		@return 999999999999;
+	}
+	@return list.nth($range, 2);
+}

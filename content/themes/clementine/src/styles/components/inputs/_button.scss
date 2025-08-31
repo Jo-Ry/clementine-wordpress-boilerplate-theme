@@ -1,0 +1,32 @@
+@use '../../abstract/' as *;
+
+button, .button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: $clr-primary-400;
+	text-decoration: none; // to accommodate if '.button' class is used on an <a> element.
+	padding-inline: rem(27);
+	height: rem(49); // setting the height, works better with the Loader component
+	border-radius: rem(5);
+	color: $clr-neutral-400;
+	border: none;
+	cursor: pointer;
+
+	&:hover {
+		background-color: $clr-primary-400;
+	}
+
+	// utilities
+	&.fill {
+		width: 100%;
+	}
+
+	&.has-icon {
+		gap: rem(10);
+
+		&.left-side {
+			flex-direction: row-reverse;
+		}
+	}
+}

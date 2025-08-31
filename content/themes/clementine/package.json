@@ -1,0 +1,30 @@
+{
+	"name": "clementine-wp-starter",
+	"version": "1.0.0",
+	"description": "Boilerplate code building for building a wordpress site using vite",
+	"main": "vite.config.js",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build",
+		"preview": "vite preview",
+		"phpcbf": "docker-compose exec -T php sh -c \"wp-content/vendor/bin/phpcbf wp-content/themes/clementine/\"",
+		"phpcs": "docker-compose exec -T php sh -c \"wp-content/vendor/bin/phpcs wp-content/themes/clementine/\"",
+		"lint:php": "npm run phpcbf && npm run phpcs",
+		"husky": "husky"
+	},
+	"author": "Johannes Ryberg",
+	"license": "ISC",
+	"devDependencies": {
+		"@eslint/css": "^0.8.1",
+		"@eslint/js": "^9.27.0",
+		"@eslint/json": "^0.13.1",
+		"eslint": "^9.27.0",
+		"glob": "^11.0.2",
+		"globals": "^16.2.0",
+		"husky": "^9.1.7",
+		"postcss": "^8.5.3",
+		"sass": "^1.89.0",
+		"vite": "^6.3.5"
+	}
+}
