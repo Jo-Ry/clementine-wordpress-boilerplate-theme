@@ -11,7 +11,7 @@
 		"phpcbf": "docker-compose exec -T php sh -c \"wp-content/vendor/bin/phpcbf wp-content/themes/clementine/\"",
 		"phpcs": "docker-compose exec -T php sh -c \"wp-content/vendor/bin/phpcs wp-content/themes/clementine/\"",
 		"lint:php": "npm run phpcbf && npm run phpcs",
-		"prepare": "husky"
+		"prepare": "cd .. && cd .. && cd .. && husky content/themes/clementine/.husky"
 	},
 	"author": "Johannes Ryberg",
 	"license": "ISC",

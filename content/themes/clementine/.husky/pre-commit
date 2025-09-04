@@ -1,4 +1,3 @@
 cd content/themes/clementine
 npm test
 
-exit 1
