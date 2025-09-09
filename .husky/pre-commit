@@ -1,0 +1,12 @@
+#!/user/bin/env sh
+. "${dirname "$0"}"/_/husky.sh
+
+# Navigate to the plugin folder and run the lint command on the whole project
+cd plugins/clementine-blocks
+
+# This command runs ESLint from the current directory, but the `../../`
+# argument tells it to check files two levels up (at the root)
+npx eslint --fix ../../
+
+# npm exec lint-staged
+
