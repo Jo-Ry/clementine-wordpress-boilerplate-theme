@@ -1,0 +1,30 @@
+{
+  "name": "clementine-wp-starter",
+  "version": "1.0.0",
+  "description": "handles root level lint operations and easy access to theme and plugin plugin servers",
+  "author": "Clementine",
+  "license": "ISC",
+  "main": "eslint.config.js",
+  "scripts": {
+    "prepare": "husky",
+    "plugin": "cd content/plugins/clementine-blocks && npm start",
+    "plugin:build": "cd content/plugins/clementine-blocks && npm install && npm run build",
+    "theme": "cd content/themes/clementine && npm run dev",
+    "theme:build": "cd content/themes/clementine && npm install && npm run build"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.6"
+  },
+  "lint-staged": {
+    "*.js": "eslint --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Jo-Ry/clementine-wordpress-boilerplate-theme.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Jo-Ry/clementine-wordpress-boilerplate-theme/issues"
+  },
+  "homepage": "https://github.com/Jo-Ry/clementine-wordpress-boilerplate-theme#readme"
+}
