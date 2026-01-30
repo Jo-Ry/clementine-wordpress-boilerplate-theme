@@ -28,7 +28,8 @@ $rem-base: 16px;
 */
 @function convert-to-rem($value, $base-value: $rem-base)  {
   $value: math.div(strip-unit($value), strip-unit($base-value)) * 1rem;
-  @if ($value == 0rem) {
+
+  @if ($value == 0) {
     $value: 0; // Turn 0rem into 0
   }
   @return $value;
@@ -41,10 +42,12 @@ $rem-base: 16px;
 */
 @function rem($values, $base-value: $rem-base) {
   $max: list.length($values);
+
   @if $max == 1 {
     @return convert-to-rem(list.nth($values, 1), $base-value);
   }
   $remValues: ();
+
   @for $i from 1 through $max {
     $remValues: list.append($remValues, convert-to-rem(list.nth($values, $i), $base-value));
   }
@@ -66,6 +69,7 @@ $rem-base: 16px;
   If the list has less than two values, it returns 0.
  */
 @function lower-bound($range) {
+
 	@if list.length($range) <= 0 {
 		@return 0;
 	}
@@ -78,6 +82,7 @@ $rem-base: 16px;
   If the list has less than two values, it returns a very large number (999999999999).
 */
 @function upper-bound($range) {
+
 	@if list.length($range) < 2 {
 		@return 999999999999;
 	}

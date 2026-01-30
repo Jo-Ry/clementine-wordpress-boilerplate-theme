@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<ruleset name="WordPress Theme Coding Standards">
+	<description>A custom set of code standard rules to check for WordPress themes.</description>
+
+	<!--
+	#############################################################################
+	COMMAND LINE ARGUMENTS
+	https://github.com/squizlabs/PHP_CodeSniffer/wiki/Annotated-ruleset.xml
+	#############################################################################
+	-->
+
+	<!-- Pass some flags to PHPCS:
+		p flag: Show progress of the run.
+		s flag: Show sniff codes in all reports.
+	-->
+	<arg value="ps"/>
+
+	<!-- Strip the filepaths down to the relevant bit. -->
+	<arg name="basepath" value="."/>
+
+	<!-- Check up to 8 files simultanously. -->
+	<arg name="parallel" value="8"/>
+
+	<!-- Color the result output -->
+	<arg name="colors"/>
+
+	<!-- Only check the PHP. JS files are checked separately with lint-staged. -->
+	<arg name="extensions" value="php, inc"/>
+
+	<!-- Check all files in this directory and the directories below it. -->
+	<file>./content</file>
+
+	<!-- 
+		What folder to exclude from inside the ./content directory.
+		In other words: don't check these folders and their contents
+		as these gets auto generated from third party sources.
+	 -->
+	<exclude-pattern>node_modules/</exclude-pattern>
+	<exclude-pattern>/plugins/clementine-blocks/build/</exclude-pattern>
+	<exclude-pattern>/plugins/clementine-blocks/src/*/render.php</exclude-pattern>
+
+	<exclude-pattern>vendor/</exclude-pattern>
+	<exclude-pattern>/plugins/clementine-blocks/src/*/blocks-manifest.php</exclude-pattern>
+
+	<!--
+	#############################################################################
+	USE THE WordPress RULESET
+	#############################################################################
+	-->
+
+	<rule ref="WordPress"/>
+
+
+	<!--
+	#############################################################################
+	SNIFF SPECIFIC CONFIGURATION
+	#############################################################################
+	-->
+
+	<!-- Verify that the text_domain is set to the desired text-domain. -->
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain">
+				<element value="clementine" />
+			</property>
+		</properties>
+	</rule>
+
+	<!-- Allow for theme specific exceptions to the file name rules based
+		 on the theme hierarchy. -->
+	<rule ref="WordPress.Files.FileName">
+		<properties>
+			<property name="is_theme" value="true"/>
+		</properties>
+	</rule>
+
+	<rule ref="WordPress.Arrays.MultipleStatementAlignment">
+		<properties>
+			<!-- No need to adjust alignment of large arrays when the item with the largest key is removed. -->
+			<property name="exact" value="true"/>
+			<!-- Don't align multi-line items if ALL items in the array are multi-line. -->
+			<property name="alignMultilineItems" value="!=100"/>
+			<!-- Array assignment operator should always be on the same line as the array key. -->
+			<property name="ignoreNewlines" value="false"/>
+		</properties>
+	</rule>
+
+	<!-- Verify that everything in the global namespace is prefixed with a theme specific prefix. -->
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<properties>
+			<property name="prefixes" type="array">
+				<element value="clementine" />
+			</property>
+		</properties>
+    	<exclude name="WordPress.NamingConventions.PrefixAllGlobals.ShortPrefixPassed" />
+	</rule>
+
+
+	<!--
+	#############################################################################
+	PHPCompatibilityWP RULESET CONFIGURATION
+	#############################################################################
+	-->
+
+	<!-- 
+		You control PHPCompatibilityWP behavior via the testVersion config in the ruleset,
+		adjust it when you raise the minimum PHP version you support.
+		it is now set to 7.2 and later.
+	-->
+	<config name="testVersion" value="7.2-99.0"/>
+	
+	<!-- 
+		The ruleset inherits PHPCompatibilityWP (which itself extends PHPCompatibility
+		with WP-appropriate excludes).
+
+		repo can be found here: https://github.com/PHPCompatibility/PHPCompatibilityWP
+	-->
+	<rule ref="PHPCompatibilityWP">
+		<include-pattern>*\.php$</include-pattern>
+	</rule>
+
+	<rule ref="Generic.Files.LineEndings">
+		<!-- <exclude name="Generic.Files.LineEndings.InvalidEOLChar"/> -->
+	</rule>
+</ruleset>

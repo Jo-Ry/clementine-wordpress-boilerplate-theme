@@ -1,0 +1,167 @@
+/*!*****************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/example-block/style.scss ***!
+  \*****************************************************************************************************************************************************************************************************************************************************/
+/*
+  @forward all scss files from the "abstract/" folder here :)
+*/
+/*
+  This function takes a numeric value as an argument and returns the value without its unit.
+
+  as first multiplies the input value by 0 and then adds 1. This effectively converts the input
+  value to a unitless value, which can then be divided by itself to remove the unit.
+  The result of this division is then returned as the output of the function.
+
+  For example, if the input value is 10px, the function will first convert it to 10 by multiplying
+  it by 0 and adding 1. Then, it will divide 10 by 10 to remove the px unit and return 1.
+*/
+/*
+  This function takes two arguments: $value & $base-value.
+
+  The purpose of this function is to convert a given value from a given base unit (in this case, pixels)
+  to the equivalent value in the rem unit.
+
+  The function first divides the value by the base value to get the equivalent value in rem. It then multiplies
+  this result by 1rem to get the final value in rem. If the resulting value is 0rem, the function returns 0 instead.
+*/
+/*
+  This function checks if $values is a single value or a list of values and
+	converts each value to rem using convert-to-rem. Finally, the function returns
+	the converted values in rem.
+*/
+/*
+  This function takes two arguments, $pixels and $context, and returns a value in em units.
+  The value of $pixels is divided by $context and the result is returned as an em value.
+  If $context is not specified, it defaults to the browser context.
+*/
+/*
+  This function takes a single argument, $range, which is a list of two or more values.
+  It returns the first value in the list, which is the lower bound of the range.
+  If the list has less than two values, it returns 0.
+ */
+/*
+  This function takes a single argument, $range, which is a list of two or more values.
+  It returns the second value in the list, which is the upper bound of the range.
+  If the list has less than two values, it returns a very large number (999999999999).
+*/
+/*
+	Global colors for you to use in your project.
+
+	Steps:
+	    1: Define your colors in theme.json.
+
+      2: Assign the the generated global css variables from theme.json.
+         for more information: 
+         https://developer.wordpress.org/themes/global-settings-and-styles/settings/color/#registering-custom-color-presets
+
+         3: put them into the $colors map. ( optional, but recommanded )
+
+	This will do 3 things for you:
+		1. you will be able to use your sass variables anywhere.
+
+		2. ( optional ) you get a utility class for background-color.
+			.bg-primary-100 {
+				background-color: ...;
+			}
+
+		3. ( optional ) you get a utility class for color.
+			.clr-primary-100 {
+				color: ...;
+			}
+*/
+/*
+	Higher numbers correspond to darker shades, and lower numbers to lighter shades. 
+  The scale ranges from 100 to 900, with 400 serving as the base or "regular" shade.
+
+	This numbering system is comparable to how font-weight is used in CSS, 
+  where 400 typically represents the regular weight.
+*/
+/* 
+  Background and text color class generarion colors defined above. 
+
+  Uncomment the lines below to use the colors in your project.
+*/
+/*
+	This code generates a set of media queries based on the defined breakpoints in a Sass map called $breakpoints.
+	It uses a nested loop to iterate through each breakpoint and its corresponding value.
+
+	For each breakpoint, it checks if it is the first or last breakpoint in the map. If it is, it defines two media queries:
+	  * one for screens with a maximum width of the breakpoint value.
+	  * one for screens with a minimum width of the breakpoint value.
+
+	  These media queries are stored in a Sass map called $media-queries with keys
+	  of the form $breakpoint-down and $breakpoint-up.
+
+	If the current breakpoint is not the first or last breakpoint, it calculates the range of values
+	between the previous breakpoint and the current breakpoint. It then defines three media queries:
+	  * one for screens with a maximum width of the previous breakpoint value and a minimum width of the current breakpoint value,
+	  * one for screens with a minimum width of the current breakpoint value and a maximum width of the next breakpoint value
+	  * and one for screens with a minimum width of the current breakpoint value and a maximum width of the current breakpoint value.
+
+	  These media queries are then stored in the same $media-queries map with keys of the form
+	  $breakpoint-only, $breakpoint-down, and $breakpoint-up.
+
+	The resulting $media-queries map contains a set of breakpoints that contain variations of single key
+	but also have single query where the variations dont apply.
+*/
+/*
+	This map can handle two scenarios:
+
+	* Scenario one is that you need a new break point dependent on the browser width
+	  then write the value as a number and please keep it hierarcichal :)
+
+	* Scenario two is that you need a new break point that dont need variations or
+	  takes in i number for that matter then write the value as you query instead.
+*/
+/*
+	This mixin called mq takes a single argument: $breakpoint.
+   	The mixin uses a map called $media-queries to retrieve the media query string for the specified breakpoint.
+	If a matching query string is found, the mixin wraps the @content block inside a media query
+	with the specified query string.
+
+	If no matching query string is found, the mixin outputs an error message indicating the available breakpoints.
+*/
+/*
+	Global colors for you to use in your project.
+
+	Steps:
+	    1: Define your colors in theme.json.
+
+      2: Assign the the generated global css variables from theme.json.
+         for more information: 
+         https://developer.wordpress.org/themes/global-settings-and-styles/settings/color/#registering-custom-color-presets
+
+         3: put them into the $colors map. ( optional, but recommanded )
+
+	This will do 3 things for you:
+		1. you will be able to use your sass variables anywhere.
+
+		2. ( optional ) you get a utility class for background-color.
+			.bg-primary-100 {
+				background-color: ...;
+			}
+
+		3. ( optional ) you get a utility class for color.
+			.clr-primary-100 {
+				color: ...;
+			}
+*/
+/*
+	Higher numbers correspond to darker shades, and lower numbers to lighter shades. 
+  The scale ranges from 100 to 900, with 400 serving as the base or "regular" shade.
+
+	This numbering system is comparable to how font-weight is used in CSS, 
+  where 400 typically represents the regular weight.
+*/
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.wp-block-clementine-blocks-example-block {
+  background-color: var(--wp--preset--color--ghost-white);
+  color: var(--wp--preset--color--contrast);
+  padding: 0.125rem;
+}
+
+/*# sourceMappingURL=style-index.css.map*/

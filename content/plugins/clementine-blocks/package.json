@@ -7,13 +7,12 @@
 	"main": "build/index.js",
 	"scripts": {
 		"build": "wp-scripts build --blocks-manifest",
-		"lint:js": "wp-scripts lint-js",
-		"packages-update": "wp-scripts packages-update",
-		"plugin-zip": "wp-scripts plugin-zip",
 		"start": "wp-scripts start --blocks-manifest",
+		"packages-update": "wp-scripts packages-update",
 		"create-block": "npx @wordpress/create-block@latest --namespace clementine-blocks --textdomain clementine --no-plugin"
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "^30.22.0"
+		"@wordpress/scripts": "^30.22.0",
+		"prettier": "^3.8.0"
 	}
 }

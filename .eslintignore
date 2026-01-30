@@ -1,0 +1,9 @@
+/public
+/node_modules/
+/dist/
+/build/
+*.css
+*.scss
+
+# Ignores clementine plugin directory cause it is handled by the @wordpress/plugin directly inside this repo
+content/plugins/clementine-blocks/*

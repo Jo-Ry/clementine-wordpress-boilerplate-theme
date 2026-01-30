@@ -1,4 +1,4 @@
-@use '../abstract/' as *;
+@use "../abstract/" as *;
 
 /*
 	* Utility Styles for Mobile and Desktop Switching
@@ -37,13 +37,16 @@
 */
 
 .mobile {
+
 	&.large {
+
 		@include mq(large-up) {
 			display: none;
 		}
 	}
 
 	&.xlarge {
+
 		@include mq(xlarge-up) {
 			display: none;
 		}
@@ -51,10 +54,12 @@
 }
 
 .desktop {
+
 	&.large {
 		display: none;
 
 		@include mq(large-up) {
+
 			&.block {
 				display: block;
 			}
@@ -73,6 +78,7 @@
 		display: none;
 
 		@include mq(xlarge-up) {
+
 			&.block {
 				display: block;
 			}

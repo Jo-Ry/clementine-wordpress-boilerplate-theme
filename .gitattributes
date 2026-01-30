@@ -1,0 +1,11 @@
+# -----------------------------------------------------------------------------
+# Line ending normalization
+# -----------------------------------------------------------------------------
+# Define LF line endings for all files.
+# Required for PHPCS line ending sniff and cross-platform consistency for PHP files
+# but also when working with eslint rules.
+text=auto eol=lf
+
+# Denote all files that are truly binary and should not be modified.
+*.png binary
+*.jpg binary

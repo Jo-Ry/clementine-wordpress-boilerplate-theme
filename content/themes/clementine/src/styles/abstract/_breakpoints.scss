@@ -1,7 +1,7 @@
-@use './functions' as *;
-@use 'sass:map';
-@use 'sass:list';
-@use 'sass:meta';
+@use "./functions" as *;
+@use "sass:map";
+@use "sass:list";
+@use "sass:meta";
 
 /*
 	This code generates a set of media queries based on the defined breakpoints in a Sass map called $breakpoints.
@@ -37,66 +37,66 @@
 	  takes in i number for that matter then write the value as you query instead.
 */
 $breakpoints: (
-  small: 320,
-  medium: 640,
-  large: 1024,
-  xlarge: 1440,
-  xxlarge: 1920,
-  portrait: 'only screen and (orientation: portrait)',
-  landscape: 'only screen and (orientation: landscape)',
+	small: 320,
+	medium: 640,
+	large: 1024,
+	xlarge: 1440,
+	xxlarge: 1920,
+	portrait: "only screen and (orientation: portrait)",
+	landscape: "only screen and (orientation: landscape)",
 );
 
 $media-queries: ();
 
 @each $breakpoint, $value in $breakpoints {
-  // Generate media queries for regular breakpoints with variations.
-  @if meta.type-of($value) == 'number' {
-    $values: map.values($breakpoints);
-    $index: list.index($values, $value);
-    $first-index: 1;
-    $last-index: list.length($values);
+	// Generate media queries for regular breakpoints with variations.
+	@if meta.type-of($value) == "number" {
+		$values: map.values($breakpoints);
+		$index: list.index($values, $value);
+		$first-index: 1;
+		$last-index: list.length($values);
 
-    @if $index == $first-index or $index == $last-index {
-      $range-down: 'only screen and (max-width: #{em-calc($value)})';
-      $range-up: 'only screen and (min-width: #{em-calc($value)})';
+		@if $index == $first-index or $index == $last-index {
+			$range-down: "only screen and (max-width: #{em-calc($value)})";
+			$range-up: "only screen and (min-width: #{em-calc($value)})";
 
-      $media-queries: map.merge(
-        $media-queries,
-        (
-          '#{$breakpoint}-down': $range-down,
-          '#{$breakpoint}-up': $range-up,
-        )
-      );
-    } @else {
-      $previous-breakpoint: list.nth($values, $index - 1);
-      $range:
-        calc(#{em-calc($previous-breakpoint)} + #{em-calc(1)}),
-        #{em-calc($value)};
+			$media-queries: map.merge(
+				$media-queries,
+				(
+					"#{$breakpoint}-down": $range-down,
+					"#{$breakpoint}-up": $range-up,
+				)
+			);
+		} @else {
+			$previous-breakpoint: list.nth($values, $index - 1);
+			$range:
+				calc(#{em-calc($previous-breakpoint)} + #{em-calc(1)}),
+				#{em-calc($value)};
 
-      $range-only: 'only screen and (min-width: #{lower-bound($range)}) and (max-width: #{upper-bound($range)})';
-      $range-down: 'only screen and (max-width: #{em-calc($value)})';
-      $range-up: 'only screen and (min-width: #{em-calc($value)})';
+			$range-only: "only screen and (min-width: #{lower-bound($range)}) and (max-width: #{upper-bound($range)})";
+			$range-down: "only screen and (max-width: #{em-calc($value)})";
+			$range-up: "only screen and (min-width: #{em-calc($value)})";
 
-      $media-queries: map.merge(
-        $media-queries,
-        (
-          '#{$breakpoint}-only': $range-only,
-          '#{$breakpoint}-down': $range-down,
-          '#{$breakpoint}-up': $range-up,
-        )
-      );
-    }
-  }
+			$media-queries: map.merge(
+				$media-queries,
+				(
+					"#{$breakpoint}-only": $range-only,
+					"#{$breakpoint}-down": $range-down,
+					"#{$breakpoint}-up": $range-up,
+				)
+			);
+		}
+	}
 
-  // Generate a media query where the string represents you single query.
-  @else if meta.type-of($value) == 'string' {
-    $media-queries: map.merge(
-      $media-queries,
-      (
-        '#{$breakpoint}': $value,
-      )
-    );
-  }
+	// Generate a media query where the string represents you single query.
+	@else if meta.type-of($value) == "string" {
+		$media-queries: map.merge(
+			$media-queries,
+			(
+				"#{$breakpoint}": $value,
+			)
+		);
+	}
 }
 
 /*
@@ -108,13 +108,15 @@ $media-queries: ();
 	If no matching query string is found, the mixin outputs an error message indicating the available breakpoints.
 */
 @mixin mq($breakpoint) {
-  $selected-query: map.get($media-queries, $breakpoint);
+	$selected-query: map.get($media-queries, $breakpoint);
 
-  @if ($selected-query) {
-    @media #{$selected-query} {
-      @content;
-    }
-  } @else {
-    @error "following params are acceptable: [ #{map-keys($media-queries)} ]";
-  }
+	@if ($selected-query) {
+
+		@media #{$selected-query} {
+			@content;
+		}
+	} @else {
+
+		@error "following params are acceptable: [ #{map-keys($media-queries)} ]";
+	}
 }

@@ -1,0 +1,45 @@
+# --- Build & Dependency Folders ---
+
+# Composer files
+/public
+/vendor
+
+# Dependencies installed by NPM (Theme or Root)
+**/node_modules
+/node_modules
+
+# Vite/Webpack output directories
+/dist
+/build
+
+# --- Version Control & Config ---
+
+# Ignore the Git/Husky internals
+.git
+.husky
+
+# Ignore cache directories
+.cache
+.eslintcache
+
+# --- Compiled Assets & Temp Files ---
+
+# Common compiled CSS/SASS output (e.g., from Vite/PostCSS/SASS compilation)
+# Adjust this based on where your final CSS lands.
+**/*.min.css 
+/assets/css/*.css 
+
+# Temporary files (like VIM swap files, etc.)
+**/*.swp
+**/*~
+
+# --- Binary & Large Files ---
+
+# Images, fonts, and other binary assets
+**/*.{png,jpg,jpeg,gif,woff,woff2,ttf,eot,svg}
+
+# --- Specific to this setup ---
+prettier.config.js
+
+# Ignores clementine plugin directory cause it is handled by the @wordpress/plugin directly inside this repo
+content/plugins/clementine-blocks/*

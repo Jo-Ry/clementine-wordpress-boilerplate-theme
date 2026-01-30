@@ -1,10 +1,5 @@
 the PREFIX 'cl' represents the theme name: 'clementine'
 
-`/husky` = Configuration for pre-commit
-`/.vite` = Configuration for Vite
-`/dist` = compliled code for production
-`/src` = Frontend code relating to the main wordpress files 
-
 // When you run 'npm run preview' be sure to change the enviroment to production inside you .env file.
 `WP_ENVIRONMENT_TYPE=development` to `WP_ENVIRONMENT_TYPE=production`
 

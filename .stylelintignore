@@ -1,0 +1,8 @@
+/build/
+/node_modules/
+vendor/
+public/
+*.min.css
+*.min.scss
+
+content/plugins/clementine-blocks/*
